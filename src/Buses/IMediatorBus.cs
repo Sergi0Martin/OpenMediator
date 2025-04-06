@@ -1,4 +1,4 @@
-﻿namespace OpenMediator;
+﻿namespace OpenMediator.Buses;
 
 public interface IMediatorBus
 {

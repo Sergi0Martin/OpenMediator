@@ -1,5 +1,4 @@
-﻿
-namespace OpenMediator;
+﻿namespace OpenMediator.Buses;
 
 internal sealed class DefaultMediatorBus(IServiceProvider serviceProvider) : IMediatorBus
 {

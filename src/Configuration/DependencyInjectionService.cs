@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
-namespace OpenMediator;
+namespace OpenMediator.Configuration;
 
 internal static class DependencyInjectionService
 {
