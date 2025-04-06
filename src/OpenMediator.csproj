@@ -1,13 +1,34 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.3" />
-  </ItemGroup>
+	<PropertyGroup>
+		<Title>OpenMediator</Title>
+		<PackageTags>mediator;mediator-pattern</PackageTags>
+		<Description>Alternative for those who do not want to pay for a simple mediator implementation.</Description>
+		<Authors>Sergio Martin</Authors>
+		<Version>0.0.1</Version>
+		<RepositoryUrl>https://github.com/Sergi0Martin/OpenMediator</RepositoryUrl>
+		<PackageProjectUrl>https://sergi0martin.github.io/OpenMediator</PackageProjectUrl>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<RepositoryType>git</RepositoryType>
+		<PackageIcon>openmediator-ico-128x128.png</PackageIcon>
+		<ApplicationIcon>openmediator.ico</ApplicationIcon>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+	
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.3" />
+	</ItemGroup>
 
 </Project>

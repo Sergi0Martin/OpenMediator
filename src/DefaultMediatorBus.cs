@@ -1,7 +1,7 @@
 ﻿
 namespace OpenMediator;
 
-public sealed class DefaultMediatorBus(IServiceProvider serviceProvider) : IMediatorBus
+internal sealed class DefaultMediatorBus(IServiceProvider serviceProvider) : IMediatorBus
 {
     public async Task<TResponse> SendAsync<TCommand, TResponse>(TCommand request)
         where TCommand : ICommand<TResponse>

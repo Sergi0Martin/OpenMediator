@@ -1,10 +1,9 @@
-﻿using MediatorPattern;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
 namespace OpenMediator;
 
-public static class DependencyInjectionService
+internal static class DependencyInjectionService
 {
     private static IServiceCollection _serviceCollection;
 
