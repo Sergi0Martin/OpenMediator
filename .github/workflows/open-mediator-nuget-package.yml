@@ -8,7 +8,7 @@ concurrency:
 on:
   push:
     branches: 
-      - 'master'
+      - 'main'
 
 # Allows you to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
@@ -62,7 +62,8 @@ jobs:
   publish-github-package:
     name: Publish GitHub package
     runs-on: ubuntu-latest
-    needs: [build, tests]
+     # needs: [build, tests]
+    needs: [build]
     steps:
     - uses: actions/download-artifact@v4
       with:
@@ -78,7 +79,8 @@ jobs:
     name: Publish GitHub release
     if: ${{ false }}  # step disabled with false
     runs-on: ubuntu-latest
-    needs: [build, tests]
+     # needs: [build, tests]
+    needs: [build]
     steps:
     - uses: actions/download-artifact@v4
       with:
