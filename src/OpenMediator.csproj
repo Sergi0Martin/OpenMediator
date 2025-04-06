@@ -16,8 +16,8 @@
 		<PackageProjectUrl>https://sergi0martin.github.io/OpenMediator</PackageProjectUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<RepositoryType>git</RepositoryType>
-		<PackageIcon>openmediator-ico-128x128.png</PackageIcon>
-		<ApplicationIcon>openmediator.ico</ApplicationIcon>
+		<PackageIcon>..\openmediator-ico-128x128.png</PackageIcon>
+		<ApplicationIcon>..\openmediator.ico</ApplicationIcon>
 	</PropertyGroup>
 
 	<ItemGroup>
