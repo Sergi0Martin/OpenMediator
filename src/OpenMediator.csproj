@@ -21,12 +21,17 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<Folder Include="Resources\" />
 		<None Include="..\README.md">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
+		<None Include="Resources/openmediator-ico-128x128.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
 	</ItemGroup>
-	
+
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.3" />
 	</ItemGroup>

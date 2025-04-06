@@ -5,7 +5,7 @@ namespace OpenMediator;
 
 internal static class DependencyInjectionService
 {
-    private static IServiceCollection _serviceCollection;
+    private static IServiceCollection? _serviceCollection;
 
     public static void RegisterFromAssembly(
         this IServiceCollection services,
@@ -32,13 +32,13 @@ internal static class DependencyInjectionService
                     var commandType = @interface.GenericTypeArguments[0];
                     var responseType = @interface.GenericTypeArguments[1];
                     var handlerType = typeof(ICommandHandler<,>).MakeGenericType(commandType, responseType);
-                    _serviceCollection.AddTransient(handlerType, type);
+                    _serviceCollection!.AddTransient(handlerType, type);
                 }
                 else if (@interface.IsGenericType && @interface.GetGenericTypeDefinition() == typeof(ICommandHandler<>))
                 {
                     var commandType = @interface.GenericTypeArguments[0];
                     var handlerType = typeof(ICommandHandler<>).MakeGenericType(commandType);
-                    _serviceCollection.AddTransient(handlerType, type);
+                    _serviceCollection!.AddTransient(handlerType, type);
                 }
             }
         }
