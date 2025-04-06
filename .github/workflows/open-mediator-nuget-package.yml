@@ -71,10 +71,10 @@ jobs:
         path: .
     # - name: Add GitHub package source  
     #   run: dotnet nuget add source --username Sergi0Martin --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name OpenMediator "https://nuget.pkg.github.com/Sergi0Martin/index.json" 
-    - name: Publish on GitHub Packages
-      run: dotnet nuget push OpenMediator.*.nupkg --api-key ${{ secrets.PUBLISHING_PACKAGES_GITHUB_PAT }} --source "OpenMediator"
-    # - name: Publish to GitHub Packages
-    #   run: dotnet nuget push OpenMediator.*.nupkg -k ${{ secrets.publish-github-packages-token }} -s https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
+    # - name: Publish on GitHub Packages
+    #   run: dotnet nuget push OpenMediator.*.nupkg --api-key ${{ secrets.PUBLISHING_PACKAGES_GITHUB_PAT }} --source "OpenMediator"
+    - name: Publish to GitHub Packages
+      run: dotnet nuget push OpenMediator.*.nupkg -k ${{ secrets.PUBLISHING_PACKAGES_GITHUB_PAT }} -s https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
 
   publish-github-release:
     name: Publish GitHub release
