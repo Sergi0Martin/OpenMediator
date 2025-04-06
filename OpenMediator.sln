@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenMediator", "src\OpenMediator.csproj", "{A45D5C4D-8957-4619-868F-6B6F7AC4E42A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{185D813C-7310-4B27-A1B8-5DE91B7084FA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A45D5C4D-8957-4619-868F-6B6F7AC4E42A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A45D5C4D-8957-4619-868F-6B6F7AC4E42A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A45D5C4D-8957-4619-868F-6B6F7AC4E42A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A45D5C4D-8957-4619-868F-6B6F7AC4E42A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A45D5C4D-8957-4619-868F-6B6F7AC4E42A} = {185D813C-7310-4B27-A1B8-5DE91B7084FA}
+	EndGlobalSection
+EndGlobal
