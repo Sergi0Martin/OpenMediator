@@ -29,6 +29,16 @@ public static class ServiceCollectionExtensions
         services.TryAddTransient<IMediatorBus, DefaultMediatorBus>();
         services.RegisterFromAssembly(configuration);
 
+        foreach (var middleware in configuration.MiddlewaresToRegister)
+        {
+            services.AddTransient(typeof(IMiddleware), middleware);
+        }
+
+        foreach (var pipeline in configuration.PipelinesToRegister)
+        {
+            services.AddTransient(typeof(IPipeline), pipeline);
+        }
+
         return services;
     }
 }
