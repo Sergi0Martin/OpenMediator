@@ -8,7 +8,6 @@ In your Program.cs call AddOpenMediator
 services.AddOpenMediator(config =>
 {
     config.RegisterCommandsFromAssemblies([Assembly.GetExecutingAssembly()]);
-    config.RegisterMiddleware<CustomMediatorMiddleware>();
 });
 ```
 
@@ -45,7 +44,6 @@ public record CreateUserCommandHandler(ILogger<CreateUserCommandHandler> _logger
     public async Task HandleAsync(CreateUserCommand command)
     {
         // Simulate some work
-        _logger.LogInformation("=========> Handling command: {Command}", command.GetType().Name);
         await Task.Delay(1000);
     }
 }
