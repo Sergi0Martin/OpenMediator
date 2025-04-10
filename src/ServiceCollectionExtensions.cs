@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using OpenMediator.Buses;
 using OpenMediator.Configuration;
+using OpenMediator.Middlewares;
 
 namespace OpenMediator;
 
@@ -31,12 +32,7 @@ public static class ServiceCollectionExtensions
 
         foreach (var middleware in configuration.MiddlewaresToRegister)
         {
-            services.AddTransient(typeof(IMiddleware), middleware);
-        }
-
-        foreach (var pipeline in configuration.PipelinesToRegister)
-        {
-            services.AddTransient(typeof(IPipeline), pipeline);
+            services.AddTransient(typeof(IMediatorMiddleware), middleware);
         }
 
         return services;

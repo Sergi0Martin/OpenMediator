@@ -1,16 +1,11 @@
-﻿namespace OpenMediator.Buses;
+﻿using OpenMediator.Middlewares;
 
-internal sealed class DefaultMediatorBus : IMediatorBus
+namespace OpenMediator.Buses;
+
+internal sealed class DefaultMediatorBus(
+    IServiceProvider _serviceProvider, 
+    IEnumerable<IMediatorMiddleware> _middlewares) : IMediatorBus
 {
-    private readonly IServiceProvider _serviceProvider;
-    private readonly IEnumerable<IPipeline> _pipelines;
-
-    public DefaultMediatorBus(IServiceProvider serviceProvider, IEnumerable<IPipeline> pipelines)
-    {
-        _serviceProvider = serviceProvider;
-        _pipelines = pipelines;
-    }
-
     public async Task<TResponse> SendAsync<TCommand, TResponse>(TCommand request)
         where TCommand : ICommand<TResponse>
     {
@@ -20,8 +15,14 @@ internal sealed class DefaultMediatorBus : IMediatorBus
             throw new InvalidOperationException($"Handler not found for command {typeof(TCommand).Name}");
         }
 
-        await ExecuteMiddlewares(request, async () => await handler.HandleAsync(request));
-        return await handler.HandleAsync(request);
+        return await ExecuteMiddlewares(request, async () => await handler.HandleAsync(request));
+    }
+
+    private async Task<TResponse> ExecuteMiddlewares<TCommand, TResponse>(TCommand command, Func<Task<TResponse>> next)
+     where TCommand : ICommand<TResponse>
+    {
+        var middlewareTask = _middlewares.Aggregate(() => next(), (nextMiddleware, middleware) => () => (Task<TResponse>)middleware.ExecuteAsync(command, nextMiddleware));
+        return await middlewareTask();
     }
 
     public async Task SendAsync<TCommand>(TCommand command)
@@ -34,14 +35,12 @@ internal sealed class DefaultMediatorBus : IMediatorBus
         }
 
         await ExecuteMiddlewares(command, async () => await handler.HandleAsync(command));
-        await handler.HandleAsync(command);
     }
 
     private async Task ExecuteMiddlewares<TCommand>(TCommand command, Func<Task> next)
         where TCommand : ICommand
     {
-        var middlewares = _pipelines.SelectMany(p => p.Middlewares);
-        var pipeline = middlewares.Aggregate((Func<Task>)(() => next()), (nextMiddleware, middleware) => () => middleware.ExecuteAsync(command, nextMiddleware));
-        await pipeline();
+        var middlewareTask = _middlewares.Aggregate(() => next(), (nextMiddleware, middleware) => () => middleware.ExecuteAsync(command, nextMiddleware));
+        await middlewareTask();
     }
 }

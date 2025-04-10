@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using OpenMediator.Middlewares;
+using System.Reflection;
 
 namespace OpenMediator.Configuration;
 
@@ -6,7 +7,6 @@ public sealed class OpenMediatorConfiguration
 {
     internal List<Assembly> AssembliesToRegister { get; } = [];
     internal List<Type> MiddlewaresToRegister { get; } = [];
-    internal List<Type> PipelinesToRegister { get; } = [];
 
     [Obsolete("Use RegisterCommandsFromAssemblies instead.")]
     public OpenMediatorConfiguration RegisterServicesFromAssembly(Assembly assembly)
@@ -35,16 +35,9 @@ public sealed class OpenMediatorConfiguration
     }
 
     public OpenMediatorConfiguration RegisterMiddleware<TMiddleware>()
-        where TMiddleware : IMiddleware
+        where TMiddleware : IMediatorMiddleware
     {
         MiddlewaresToRegister.Add(typeof(TMiddleware));
-        return this;
-    }
-
-    public OpenMediatorConfiguration RegisterPipeline<TPipeline>()
-        where TPipeline : IPipeline
-    {
-        PipelinesToRegister.Add(typeof(TPipeline));
         return this;
     }
 }
