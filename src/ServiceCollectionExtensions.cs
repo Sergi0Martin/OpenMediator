@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using OpenMediator.Buses;
 using OpenMediator.Configuration;
+using OpenMediator.Middlewares;
 
 namespace OpenMediator;
 
@@ -28,6 +29,11 @@ public static class ServiceCollectionExtensions
 
         services.TryAddTransient<IMediatorBus, DefaultMediatorBus>();
         services.RegisterFromAssembly(configuration);
+
+        foreach (var middleware in configuration.MiddlewaresToRegister)
+        {
+            services.AddTransient(typeof(IMediatorMiddleware), middleware);
+        }
 
         return services;
     }

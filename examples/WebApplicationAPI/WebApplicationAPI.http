@@ -1,0 +1,5 @@
+﻿@WebApplicationAPI_HostAddress = https://localhost:7173
+
+POST {{WebApplicationAPI_HostAddress}}/api/user
+
+###
