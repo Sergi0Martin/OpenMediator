@@ -3,3 +3,8 @@
 POST {{WebApplicationAPI_HostAddress}}/api/user
 
 ###
+
+@id=99
+GET {{WebApplicationAPI_HostAddress}}/api/user/{{id}}
+
+###
