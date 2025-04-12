@@ -1,6 +1,6 @@
 ﻿using OpenMediator;
 
-namespace WebApplicationAPI.UseCases;
+namespace WebApplicationAPI.UseCases.CreateUser;
 
 public record CreateUserCommandHandler(ILogger<CreateUserCommandHandler> _logger) : ICommandHandler<CreateUserCommand>
 {
