@@ -14,6 +14,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{18DC
 		.github\workflows\open-mediator-nuget-package.yml = .github\workflows\open-mediator-nuget-package.yml
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{00CDF08F-6557-44E0-9B54-D0FC0CB1879A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenMediator.Integration.Test", "test\OpenMediator.Integration.Test\OpenMediator.Integration.Test.csproj", "{D06610C3-70D7-48FD-9075-A40CA685B58A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenMediator.Shared.Integration.Test", "test\OpenMediator.Shared.Integration.Test\OpenMediator.Shared.Integration.Test.csproj", "{2436B77B-FA64-4DF2-A93D-DA175B411C44}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +30,14 @@ Global
 		{A45D5C4D-8957-4619-868F-6B6F7AC4E42A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A45D5C4D-8957-4619-868F-6B6F7AC4E42A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A45D5C4D-8957-4619-868F-6B6F7AC4E42A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D06610C3-70D7-48FD-9075-A40CA685B58A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D06610C3-70D7-48FD-9075-A40CA685B58A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D06610C3-70D7-48FD-9075-A40CA685B58A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D06610C3-70D7-48FD-9075-A40CA685B58A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2436B77B-FA64-4DF2-A93D-DA175B411C44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2436B77B-FA64-4DF2-A93D-DA175B411C44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2436B77B-FA64-4DF2-A93D-DA175B411C44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2436B77B-FA64-4DF2-A93D-DA175B411C44}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -31,5 +45,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{A45D5C4D-8957-4619-868F-6B6F7AC4E42A} = {185D813C-7310-4B27-A1B8-5DE91B7084FA}
 		{18DC3938-D752-44C5-A4A3-23BED5C157C9} = {8F49E2C3-A3E4-4114-A8D6-7FF7CC4E66EC}
+		{D06610C3-70D7-48FD-9075-A40CA685B58A} = {00CDF08F-6557-44E0-9B54-D0FC0CB1879A}
+		{2436B77B-FA64-4DF2-A93D-DA175B411C44} = {00CDF08F-6557-44E0-9B54-D0FC0CB1879A}
 	EndGlobalSection
 EndGlobal
