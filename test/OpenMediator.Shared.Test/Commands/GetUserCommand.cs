@@ -1,4 +1,4 @@
-﻿namespace OpenMediator.Shared.Integration.Test.Commands;
+﻿namespace OpenMediator.Shared.Test.Commands;
 
 public record GetUserCommand(int Id) : ICommand<User>;
 
@@ -9,8 +9,7 @@ public record GetUserCommandHandler(TestDependency testDependency) : ICommandHan
     public async Task<User> HandleAsync(GetUserCommand command)
     {
         await Task.Delay(500);
-        testDependency.Called = true;
-        testDependency.Counter++;
+        testDependency.Call();
 
         return new User(
             Id: 1,

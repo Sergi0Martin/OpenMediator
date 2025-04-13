@@ -8,3 +8,7 @@ POST {{WebApplicationAPI_HostAddress}}/api/user
 GET {{WebApplicationAPI_HostAddress}}/api/user/{{id}}
 
 ###
+
+GET {{WebApplicationAPI_HostAddress}}/api/user/{{id}}
+
+###

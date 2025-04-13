@@ -19,9 +19,9 @@ internal sealed class DefaultMediatorBus(
     }
 
     private async Task<TResponse> ExecuteMiddlewares<TCommand, TResponse>(TCommand command, Func<Task<TResponse>> next)
-     where TCommand : ICommand<TResponse>
+        where TCommand : ICommand<TResponse>
     {
-        var middlewareTask = _middlewares.Aggregate(() => next(), (nextMiddleware, middleware) => () => (Task<TResponse>)middleware.ExecuteAsync(command, nextMiddleware));
+        var middlewareTask = _middlewares.Aggregate(() => next(), (nextMiddleware, middleware) => async () => await middleware.ExecuteAsync(command, nextMiddleware));
         return await middlewareTask();
     }
 
