@@ -47,21 +47,19 @@ jobs:
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 9.0.x
-    - name: Test
-      run: dotnet test OpenMediator.sln
-    - name: Test
+    - name: Test with coverage
       run: dotnet test --collect:"XPlat Code Coverage" --results-directory:./CoverageResults/ OpenMediator.sln
     - name: Move coverage result files
       run: |
         echo MOVER COVERAGE RESULTS
         cp CoverageResults/*/*.xml CoverageResults/
-    - name: Codecov
-      uses: codecov/codecov-action@v3.1.0
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v5
       with:
+        token: ${{ secrets.CODECOV_TOKEN }}
         name: Code coverage report
         files: CoverageResults/coverage.cobertura.xml
         flags: unittests
-        verbose: false
 
   publish-github-package:
     name: Publish GitHub package
