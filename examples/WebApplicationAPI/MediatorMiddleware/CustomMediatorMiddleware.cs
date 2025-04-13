@@ -17,6 +17,5 @@ public class CustomMediatorMiddleware(ILogger<CustomMediatorMiddleware> _logger)
         // Do something after the command
         _logger.LogInformation("=========> After command: {Command}", command.GetType().Name);
         Task.Delay(1000).Wait();
-
     }
 }
