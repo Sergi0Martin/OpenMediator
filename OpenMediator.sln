@@ -16,9 +16,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{18DC
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{00CDF08F-6557-44E0-9B54-D0FC0CB1879A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenMediator.Integration.Test", "test\OpenMediator.Integration.Test\OpenMediator.Integration.Test.csproj", "{D06610C3-70D7-48FD-9075-A40CA685B58A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenMediator.Unit.Test", "test\OpenMediator.Unit.Test\OpenMediator.Unit.Test.csproj", "{D06610C3-70D7-48FD-9075-A40CA685B58A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenMediator.Shared.Integration.Test", "test\OpenMediator.Shared.Integration.Test\OpenMediator.Shared.Integration.Test.csproj", "{2436B77B-FA64-4DF2-A93D-DA175B411C44}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenMediator.Shared.Test", "test\OpenMediator.Shared.Test\OpenMediator.Shared.Test.csproj", "{2436B77B-FA64-4DF2-A93D-DA175B411C44}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

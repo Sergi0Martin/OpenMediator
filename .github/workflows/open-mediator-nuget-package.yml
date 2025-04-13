@@ -37,33 +37,32 @@ jobs:
         name: solution-build
         path: OpenMediator.*.nupkg
 
-  # tests:
-  #   name: Run tests
-  #   runs-on: ubuntu-latest
-  #   needs: [build]
-  #   steps:
-  #   - uses: actions/checkout@v4
-  #   # - name: Test
-  #   #   run: dotnet test OpenMediator.sln
-  #   - name: Test
-  #     run: dotnet test --collect:"XPlat Code Coverage" --results-directory:./CoverageResults/ OpenMediator.sln
-  #   - name: Move coverage result files
-  #     run: |
-  #       echo MOVER COVERAGE RESULTS
-  #       cp CoverageResults/*/*.xml CoverageResults/
-  #   - name: Codecov
-  #     uses: codecov/codecov-action@v3.1.0
-  #     with:
-  #       name: Code coverage report
-  #       files: CoverageResults/coverage.cobertura.xml
-  #       flags: unittests
-  #       verbose: false
+  tests:
+    name: Run tests
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+    - uses: actions/checkout@v4
+    - name: Test
+      run: dotnet test OpenMediator.sln
+    - name: Test
+      run: dotnet test --collect:"XPlat Code Coverage" --results-directory:./CoverageResults/ OpenMediator.sln
+    - name: Move coverage result files
+      run: |
+        echo MOVER COVERAGE RESULTS
+        cp CoverageResults/*/*.xml CoverageResults/
+    - name: Codecov
+      uses: codecov/codecov-action@v3.1.0
+      with:
+        name: Code coverage report
+        files: CoverageResults/coverage.cobertura.xml
+        flags: unittests
+        verbose: false
 
   publish-github-package:
     name: Publish GitHub package
     runs-on: ubuntu-latest
-     # needs: [build, tests]
-    needs: [build]
+    needs: [build, tests]
     steps:
     - uses: actions/download-artifact@v4
       with:
@@ -76,8 +75,7 @@ jobs:
     name: Publish GitHub release
     if: ${{ false }}  # step disabled with false
     runs-on: ubuntu-latest
-     # needs: [build, tests]
-    needs: [build]
+    needs: [build, tests]
     steps:
     - uses: actions/download-artifact@v4
       with:
@@ -98,8 +96,7 @@ jobs:
     environment: 
       name: production
       url: https://www.nuget.org/packages/OpenMediator/
-    # needs: [build, tests]
-    needs: [build]
+    needs: [build, tests]
     steps:
     - uses: actions/download-artifact@v4
       with:

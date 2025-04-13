@@ -55,18 +55,32 @@ Also you can configure and execute custom middlewares before or after the comman
 1. Define your middleware by implementing the `IMiddleware` interface:
 
 ```csharp
-public class CustomMediatorMiddleware(ILogger<CustomMediatorMiddleware> _logger) : IMediatorMiddleware
+public class CustomMediatorMiddleware() : IMediatorMiddleware
 {
     public async Task ExecuteAsync<TCommand>(TCommand command, Func<Task> next)
         where TCommand : ICommand
     {
         // Do something before the command
-        Task.Delay(1000).Wait();
+        await Task.Delay(500);
 
         await next();
 
         // Do something after the command
-        Task.Delay(1000).Wait();
+        await Task.Delay(500);
+    }
+
+    public async Task<TResponse> ExecuteAsync<TCommand, TResponse>(TCommand command, Func<Task<TResponse>> next)
+        where TCommand : ICommand<TResponse>
+    {
+        // Do something before the command
+        await Task.Delay(500);
+
+        var result = await next();
+
+        // Do something after the command
+        await Task.Delay(500);
+
+        return result;
     }
 }
 ```
