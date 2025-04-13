@@ -1,3 +1,5 @@
+[![codecov](https://codecov.io/gh/Sergi0Martin/OpenMediator/graph/badge.svg?token=MYOEKIL20M)](https://codecov.io/gh/Sergi0Martin/OpenMediator)
+
 # OpenMediator
 Alternative for those who do not want to pay for a mediator implementation.
 

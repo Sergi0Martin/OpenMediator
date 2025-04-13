@@ -33,4 +33,21 @@ public sealed class CommandResponseTest : IClassFixture<UnitTestFixture>
         Assert.Equal(result, expectedResult);
         Assert.True(_testDependency.Called);
     }
+
+    [Fact]
+    public async Task Send_Command_With_Response_Throw_If_Not_Registered()
+    {
+        // Arrange
+        var command = new GetCarModelCommand(1);
+
+        // Act
+        Func<Task> action = async () => await _fixture.Mediator.SendAsync<GetCarModelCommand, string>(command);
+
+        // Assert
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(action);
+        Assert.Equal("Handler not found for command GetCarModelCommand", exception.Message);
+    }
+
+    public record GetCarModelCommand(int Id) : ICommand<string>;
+
 }

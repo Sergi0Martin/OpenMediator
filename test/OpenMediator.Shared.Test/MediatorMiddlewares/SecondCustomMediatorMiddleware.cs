@@ -1,7 +1,9 @@
 ﻿using OpenMediator.Middlewares;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OpenMediator.Shared.Test.MediatorMiddlewares;
 
+[ExcludeFromCodeCoverage]
 public class SecondCustomMediatorMiddleware(TestDependency testDependency) : IMediatorMiddleware
 {
     public async Task ExecuteAsync<TCommand>(TCommand command, Func<Task> next)

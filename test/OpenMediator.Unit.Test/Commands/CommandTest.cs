@@ -28,4 +28,20 @@ public sealed class CommandTest : IClassFixture<UnitTestFixture>
         // Assert
         Assert.True(_testDependency.Called);
     }
+
+    [Fact]
+    public async Task Send_Command_Throw_If_Not_Registered()
+    {
+        // Arrange
+        var command = new CreateCarCommand(1);
+
+        // Act
+        Func<Task> action = async () => await _fixture.Mediator.SendAsync(command);
+
+        // Assert
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(action);
+        Assert.Equal("Handler not found for command CreateCarCommand", exception.Message);
+    }
+
+    public record CreateCarCommand(int Id) : ICommand;
 }
