@@ -54,7 +54,7 @@ public record CreateUserCommandHandler(ILogger<CreateUserCommandHandler> _logger
 ### Middleware Configuration
 Also you can configure and execute custom middlewares before or after the command.
 
-1. Define your middleware by implementing the `IMiddleware` interface:
+1. Define your middleware by implementing the `IMediatorMiddleware` interface:
 
 ```csharp
 public class CustomMediatorMiddleware() : IMediatorMiddleware
