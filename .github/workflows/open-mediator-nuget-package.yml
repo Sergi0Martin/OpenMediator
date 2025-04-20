@@ -31,7 +31,7 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
     - name: Package
-      run: dotnet pack -c Release -o . OpenMediator.sln
+      run: dotnet pack -c Release -o . src/OpenMediator.csproj
     # - name: Console Command list files
     #   run: |
     #     ls -R

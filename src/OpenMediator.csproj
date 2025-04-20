@@ -11,7 +11,7 @@
 		<PackageTags>mediator;mediator-pattern</PackageTags>
 		<Description>Alternative for those who do not want to pay for a mediator implementation.</Description>
 		<Authors>Sergio Martin</Authors>
-		<Version>1.1.2</Version>
+		<Version>1.1.3</Version>
 		<RepositoryUrl>https://github.com/Sergi0Martin/OpenMediator</RepositoryUrl>
 		<PackageProjectUrl>https://sergi0martin.github.io/OpenMediator</PackageProjectUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
