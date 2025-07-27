@@ -6,9 +6,9 @@ public record User(int Id, string Name, string Email);
 
 public record GetUserCommandHandler(TestDependency testDependency) : ICommandHandler<GetUserCommand, User>
 {
-    public async Task<User> HandleAsync(GetUserCommand command)
+    public async Task<User> HandleAsync(GetUserCommand command, CancellationToken cancellationToken = default)
     {
-        await Task.Delay(500);
+        await Task.Delay(500, cancellationToken);
         testDependency.Call();
 
         return new User(

@@ -44,4 +44,21 @@ public sealed class CommandTest : IClassFixture<UnitTestFixture>
     }
 
     public record CreateCarCommand(int Id) : ICommand;
+    
+    
+    [Fact]
+    public async Task HandleAsync_ShouldThrow_WhenCancellationIsRequested()
+    {
+        // Arrange
+        var handler = new LongRunningCommandHandler();
+        var command = new LongRunningCommand();
+
+        using var cts = new CancellationTokenSource();
+        await cts.CancelAsync(); // Já está cancelado antes de executar
+
+        // Act & Assert
+        await Assert.ThrowsAsync<OperationCanceledException>(() =>
+            handler.HandleAsync(command, cts.Token));
+    }
+
 }

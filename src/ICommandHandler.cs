@@ -5,11 +5,11 @@ namespace OpenMediator;
 public interface ICommandHandler<in TCommand>
     where TCommand : ICommand
 {
-    Task HandleAsync(TCommand command);
+    Task HandleAsync(TCommand command, CancellationToken cancellationToken = default);
 }
 
-public interface ICommandHandler<in TCommand, TRespose>
-    where TCommand : ICommand<TRespose>
+public interface ICommandHandler<in TCommand, TResponse>
+    where TCommand : ICommand<TResponse>
 {
-    Task<TRespose> HandleAsync(TCommand command);
+    Task<TResponse> HandleAsync(TCommand command, CancellationToken cancellationToken = default);
 }
