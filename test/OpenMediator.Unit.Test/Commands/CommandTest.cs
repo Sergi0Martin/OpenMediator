@@ -54,11 +54,10 @@ public sealed class CommandTest : IClassFixture<UnitTestFixture>
         var command = new LongRunningCommand();
 
         using var cts = new CancellationTokenSource();
-        await cts.CancelAsync(); // Já está cancelado antes de executar
+        await cts.CancelAsync(); //Cancelled before execution
 
         // Act & Assert
         await Assert.ThrowsAsync<OperationCanceledException>(() =>
             handler.HandleAsync(command, cts.Token));
     }
-
 }

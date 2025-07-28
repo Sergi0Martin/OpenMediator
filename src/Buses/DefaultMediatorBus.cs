@@ -26,9 +26,7 @@ internal sealed class DefaultMediatorBus(
         CancellationToken cancellationToken = default)
         where TCommand : ICommand<TResponse>
     {
-        var middlewareTask = _middlewares.Aggregate(() => next(),
-            (nextMiddleware, middleware) => async () =>
-                await middleware.ExecuteAsync(command, nextMiddleware, cancellationToken));
+        var middlewareTask = _middlewares.Aggregate(() => next(), (nextMiddleware, middleware) => async () => await middleware.ExecuteAsync(command, nextMiddleware, cancellationToken));
         return await middlewareTask();
     }
 
@@ -52,8 +50,7 @@ internal sealed class DefaultMediatorBus(
         CancellationToken cancellationToken = default)
         where TCommand : ICommand
     {
-        var middlewareTask = _middlewares.Aggregate(next,
-            (nextMiddleware, middleware) => () => middleware.ExecuteAsync(command, nextMiddleware, cancellationToken));
+        var middlewareTask = _middlewares.Aggregate(next, (nextMiddleware, middleware) => () => middleware.ExecuteAsync(command, nextMiddleware, cancellationToken));
         await middlewareTask();
     }
 }
