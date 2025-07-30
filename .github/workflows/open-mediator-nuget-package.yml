@@ -74,7 +74,7 @@ jobs:
         name: solution-build
         path: .
     - name: Publish to GitHub Packages
-      run: dotnet nuget push OpenMediator.*.nupkg -k ${{ secrets.PUBLISHING_PACKAGES_GITHUB_PAT }} -s https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
+      run: dotnet nuget push OpenMediator.*.nupkg -k ${{ secrets.PUBLISH_GITHUB_PACKAGES_TOKEN_OPEN_MEDIATOR }} -s https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
 
   publish-github-release:
     name: Publish GitHub release
