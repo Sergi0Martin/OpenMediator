@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using OpenMediator.Buses;
+using OpenMediator.Middlewares;
 using OpenMediator.Shared.Test;
 using OpenMediator.Shared.Test.Commands;
 using OpenMediator.Shared.Test.MediatorMiddlewares;
@@ -75,4 +76,41 @@ public sealed class CustomMediatorMiddlewareTest
         Assert.True(_testDependency.Called);
         Assert.Equal(5, _testDependency.Counter);
     }
+    
+    [Fact]
+    public async Task Middleware_ShouldThrow_WhenCancellationIsRequested()
+    {
+        // Arrange
+        var middleware = new CancellationMiddleware();
+        var command = new LongRunningCommand();
+        using var cts = new CancellationTokenSource();
+        await cts.CancelAsync();
+
+        // Act & Assert
+        await Assert.ThrowsAsync<OperationCanceledException>(() =>
+            middleware.ExecuteAsync(command, () => Task.CompletedTask, cts.Token));
+    }
+    
+    
+    [Fact]
+    public async Task MediatorBus_ShouldCancel_WhenTokenIsRequested()
+    {
+        // Arrange
+        var services = new ServiceCollection();
+        services.AddTransient<ICommandHandler<LongRunningCommand>, LongRunningCommandHandler>();
+        var middlewares = new List<IMediatorMiddleware> { new CancellationMiddleware() };
+
+        var serviceProvider = services.BuildServiceProvider();
+        var bus = new DefaultMediatorBus(serviceProvider, middlewares);
+
+        var command = new LongRunningCommand();
+        using var cts = new CancellationTokenSource();
+        await cts.CancelAsync();
+
+        // Act & Assert
+        await Assert.ThrowsAsync<OperationCanceledException>(() =>
+            bus.SendAsync(command, cts.Token));
+    }
+
+
 }
